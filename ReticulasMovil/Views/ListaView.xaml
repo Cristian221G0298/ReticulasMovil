@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ReticulasMovil.Views.ListaView"
+             Title="Lista de Materias" x:Name="paginaLista">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" Command="{Binding VerAgregarcommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Picker ItemsSource="{Binding ListaCarreras}" SelectedItem="{Binding CarreraSeleccionada}"></Picker>
+        <CollectionView Margin="5" Grid.Row="1" ItemsSource="{Binding Materias}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem Text="Editar" BackgroundColor="LightGrey" Command="{Binding Source={x:Reference paginaLista}, Path=BindingContext.VerEditarCommand}" CommandParameter="{Binding .}"></SwipeItem>
+                            <SwipeItem Text="Eliminar" BackgroundColor="DarkRed" Command="{Binding Source={x:Reference paginaLista}, Path=BindingContext.VerEliminarCommand}" CommandParameter="{Binding .}"></SwipeItem>
+                        </SwipeView.RightItems>
+                        <VerticalStackLayout Background="Gray">
+                            <Label Text="{Binding Nombre}" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding Clave}"></Label>
+                            <Label Text="{Binding Semestre}"></Label>
+                        </VerticalStackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

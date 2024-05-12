@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReticulasMovil.Views.EditarView"
+             Title="Editar">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Editar" Command="{Binding EditarCommand}"></ToolbarItem>
+        <ToolbarItem Text="Cancelar" Command="{Binding CancelarCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <VerticalStackLayout Margin="10">
+        <Label>Clave:</Label>
+        <Entry Text="{Binding Materia.Clave}"></Entry>
+
+        <Label>Nombre:</Label>
+        <Entry Text="{Binding Materia.Nombre}"></Entry>
+
+        <Label>Semestre:</Label>
+        <Picker ItemsSource="{Binding Semestres}" SelectedItem="{Binding Materia.Semestre}"></Picker>
+
+        <Label>Carrera:</Label>
+        <Picker ItemsSource="{Binding ListaCarreras}" SelectedItem="{Binding Materia.Carrera}"></Picker>
+
+        <Label TextColor="red" Text="{Binding Error}" HorizontalOptions="Center" Margin="5" FontSize="Small"></Label>
+    </VerticalStackLayout>
+</ContentPage>

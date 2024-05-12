@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ReticulasMovil.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ReticulasMovil"
+    xmlns:views="clr-namespace:ReticulasMovil.Views"
+    xmlns:viewmodel="clr-namespace.ReticulasMovil.ViewModel"
+    FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="MediumPurple"
+    Shell.ForegroundColor="White"
+    Shell.TitleColor="White"
+    Shell.TabBarTitleColor="White"
+    xmlns:viemodel="clr-namespace:ReticulasMovil.ViewModel" x:DataType="viemodel:ReticulaViewModel"
+    Title="Reticulas Movil">
+    <Shell.BindingContext>
+        <viemodel:ReticulaViewModel></viemodel:ReticulaViewModel>
+    </Shell.BindingContext>
+    <ShellContent Title="Lista de Materia" ContentTemplate="{DataTemplate views:ListaView}" Route="Lista"></ShellContent>
+
+    <ShellContent
+        Title="Agregar Materia"
+        ContentTemplate="{DataTemplate views:AgregarView}"
+        Route="Agregar" />
+
+    <ShellContent
+        Title="Eliminar Materia"
+        ContentTemplate="{DataTemplate views:EliminarView}"
+        Route="Eliminar" />
+
+    <ShellContent
+        Title="Editar Materia"
+        ContentTemplate="{DataTemplate views:EditarView}"
+        Route="Editar" />
+
+</Shell>
